@@ -46,7 +46,7 @@ class CreateUserWithOrg
         org.update!(stytch_organization_id: stytch_org_id)
 
         # Create member in Stytch
-        name = [user.first_name, user.last_name].compact.join(' ').presence
+        name = [ user.first_name, user.last_name ].compact.join(' ').presence
 
         member_resp = stytch.create_member(
           organization_id: stytch_org_id,
@@ -71,9 +71,9 @@ class CreateUserWithOrg
       end
     end
     if error.present?
-      return Failure(error)
+      Failure(error)
     else
-      return Success(user: user, organization: org)
+      Success(user: user, organization: org)
     end
   end
 end

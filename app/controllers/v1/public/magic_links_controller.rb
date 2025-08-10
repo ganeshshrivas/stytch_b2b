@@ -14,7 +14,7 @@ module V1
           orgs.each do |org|
             begin
               resp = stytch.get_member(organization_id: org.stytch_organization_id, email: email)
-              member_id = resp['member_id'] || resp.dig('member','member_id')
+              member_id = resp['member_id'] || resp.dig('member', 'member_id')
               if member_id
                 # delete dangling member
                 stytch.delete_member(organization_id: org.stytch_organization_id, member_id: member_id)
@@ -59,9 +59,9 @@ module V1
         # resp should include member info & organization
         # Extract canonical email and member_id / organization_id
         member = resp['member'] || resp['member_id'] ? resp['member'] : nil
-        email = resp.dig('member', 'email_address') || resp['email_address'] || resp.dig('member','email')
+        email = resp.dig('member', 'email_address') || resp['email_address'] || resp.dig('member', 'email')
         member_id = resp['member_id'] || resp.dig('member', 'member_id')
-        org_id = resp.dig('organization','organization_id') || resp.dig('organization','id') || resp.dig('member','organization_id')
+        org_id = resp.dig('organization', 'organization_id') || resp.dig('organization', 'id') || resp.dig('member', 'organization_id')
 
         # Find local user by email
         user = User.find_by(email: email)
