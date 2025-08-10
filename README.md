@@ -1,6 +1,3 @@
-Here’s your properly formatted **README.md** content with correct markdown syntax and indentation:
-
-````markdown
 # Stytch B2B API (Rails 8.0.2 API-only)
 
 ## Overview
@@ -35,31 +32,29 @@ This Rails API-only application implements a B2B signup and authentication syste
 
 1. Clone the repository and install dependencies:
 
-   ```bash
    bundle install
-````
 
 2. Setup the database:
 
    ```bash
-   rails db:create
-   rails db:migrate
+     rails db:create
+     rails db:migrate
    ```
 
 3. Add your Stytch credentials to the `.env` file in the root directory:
 
    ```env
-   STYTCH_ENV=test
-   STYTCH_PUBLIC_TOKEN=public-token-test-xxxxxx
-   ADMIN_TOKEN=secret-test-xxxxxx
-   STYTCH_PROJECT_ID=project-test-xxxxxx
-   STYTCH_SECRET=secret-test-xxxxxx
+     STYTCH_ENV=test
+     STYTCH_PUBLIC_TOKEN=public-token-test-xxxxxx
+     ADMIN_TOKEN=secret-test-xxxxxx
+     STYTCH_PROJECT_ID=project-test-xxxxxx
+     STYTCH_SECRET=secret-test-xxxxxx
    ```
 
 4. Start the Rails server:
 
    ```bash
-   rails server
+     rails server
    ```
 
 ---
