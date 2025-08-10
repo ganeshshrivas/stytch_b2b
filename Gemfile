@@ -45,8 +45,18 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
-gem 'stytch'             # official Stytch Ruby SDK
-gem 'httparty'           # fallback HTTP client
-gem 'dry-operation'
+
+# Stytch Ruby SDK (B2B)
+gem 'stytch'
+
+# dry-operations for orchestrating business flows
+gem 'dry-monads', '~> 1.3'
+gem 'dry-operation', '~> 1.0'
+
+# dotenv for local env vars (development/test)
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'jwt'                # for issuing tokens after callback (optional)
+
+# CORS for API usage
+gem 'rack-cors'
+
+gem 'debug'

@@ -7,4 +7,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :admin do
+    post 'users', to: 'users#create'  # protected admin endpoint
+  end
+
+  namespace :public do
+    post 'magic_links', to: 'magic_links#create'      # request magic link
+    get 'magic_links/authenticate', to: 'magic_links#authenticate'  # callback
+  end
 end
