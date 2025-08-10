@@ -1,7 +1,6 @@
 module V1
   module Admin
     class UsersController < ApplicationController
-      # NOTE: in real app protect this endpoint (API key / auth)
       def create
         op = CreateUserWithOrg.new.call(
           email: params.require(:email),

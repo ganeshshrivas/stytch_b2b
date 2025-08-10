@@ -4,7 +4,16 @@ module V1
     class MagicLinksController < ApplicationController
       # POST /public/magic_links  { email: "", organization_slug: optional }
       def create
-        email = params.require(:email).downcase.strip
+        # Require email param, handle missing param gracefully
+        begin
+          email = params.require(:email).downcase.strip
+        rescue ActionController::ParameterMissing
+          return render json: { error: 'Email parameter is required' }, status: :bad_request
+        end
+
+        if email.blank?
+          return render json: { error: 'Email cannot be blank' }, status: :unprocessable_entity
+        end
         user = User.find_by(email: email)
 
         unless user
@@ -31,7 +40,7 @@ module V1
         # If user belongs to multiple organizations, require organization_slug param
         if params[:organization_slug].present?
           org = user.organizations.find_by(slug: params[:organization_slug])
-          return render json: { error: 'Org mismatch' }, status: :unprocessable_entity unless org
+          return render json: { error: "organisation mismatch, User not available in #{params[:organization_slug]} organizations" }, status: :unprocessable_entity unless org
         else
           # if user has exactly 1 org, pick it; otherwise force client to pass organization_slug
           if user.organizations.count == 1
