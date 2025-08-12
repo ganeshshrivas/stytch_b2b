@@ -78,7 +78,7 @@ curl -X POST http://localhost:3000/v1/admin/users \
 ### Request a Magic Link (Public Endpoint)
 
 ```bash
-curl -X POST http://localhost:3000/v1/public/magic_links \
+curl -X GET http://localhost:3000/v1/public/magic_links \
   -H "Content-Type: application/json" \
   -d '{
     "email":"shrivasganesh57@gmail.com",
