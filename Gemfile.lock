@@ -311,7 +311,7 @@ GEM
       json-jwt (>= 1.13.0)
       jwt (>= 2.3.0)
     thor (1.4.0)
-    thruster (0.1.15-x86_64-linux)
+    thruster (0.1.16-x86_64-linux)
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
